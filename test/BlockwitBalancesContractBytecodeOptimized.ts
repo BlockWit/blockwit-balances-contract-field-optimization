@@ -14,7 +14,7 @@ describe("BlockwitEmptyContractBytecodeOptimized", function () {
             // - checks whether sent ether
             "348015600e575f80fd" +
             // - copy code to memory and return
-            "5B50607280601a5f395ff3fe" +
+            "5B50607b80601a5f395ff3fe" +
 
             // smart-contract
             // - pointer to empty memory initialization
@@ -22,15 +22,15 @@ describe("BlockwitEmptyContractBytecodeOptimized", function () {
             // - checks whether sent ether
              "348015600e575f80fd" +
             // - checks whether it 4-bytes function identifier call or not
-            "5b5060043610602e57" +
+            "5b5060043610602f57" +
             // - methods selector
             // -- load 4-bytes identifier from msg.data
             "5f3560e01c" +
 
             // is getBalance(address) ?
-            "8063" + "f8b2cb4f" + "1460" + "51" + "57" +
+            "8063" + "f8b2cb4f" + "1460" + "55" + "57" +
             // is setBalance(address,uint256) ?
-            "8063" + "e30443bc" + "1460" + "32" + "57" +
+            "63" + "e30443bc" + "1460" + "33" + "57" +
             // - revert in case of eth sent or 4-bytes function selector not found
             "5b5f80fd" +
 
@@ -39,11 +39,11 @@ describe("BlockwitEmptyContractBytecodeOptimized", function () {
             // --- read arguments size
             "5b3660049003" +
             // --- check size equals 0x40
-            "60" + "40" + "141560" + "2e" + "57" +
+            "60" + "40" + "141560" + "2f" + "57" +
             // --- read first argument from msg.data to stack
             "600435" +
             // --- calculate in where in storage write argument
-            "5f525f60205220" +
+            "5f525f60205260405f20" +
             // --- read balance from msg.data to stack
             "602435" +
             // --- write balance to calculated address in storage
@@ -54,11 +54,11 @@ describe("BlockwitEmptyContractBytecodeOptimized", function () {
             // --- read arguments size
             "5b3660049003" +
             // --- check size equals 0x20
-            "60" + "20" + "141560" + "2e" + "57" +
+            "60" + "20" + "141560" + "2f" + "57" +
             // --- read first argument from msg.data to stack
             "600435" +
             // --- calculate from where in storage going to read balance
-            "5f525f60205220" +
+            "5f525f60205260405f20" +
             // --- read balance from storage to stack
             "54" +
             // --- write balance from stack to memory
