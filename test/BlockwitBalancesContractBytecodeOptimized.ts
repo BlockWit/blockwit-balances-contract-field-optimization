@@ -41,20 +41,44 @@ describe("BlockwitEmptyContractBytecodeOptimized", function () {
             // --- check size equals 0x40
             "60" + "40" + "141560" + "2e" + "57" +
             // --- read first argument from msg.data to stack
-            "..." +
+            "600435" +
+            // --- calculate in where in storage write argument
+            "5f525f60205220" +
+            // --- read balance from msg.data to stack
+            "602435" +
+            // --- write balance to calculated address in storage
+            "9055" +
+            // --- return
+            "5f80f3" +
             // -- getBalance
-            "...";
-/*
-            // metadata
-            "a2646970667358221220" +
-            "7b810610924a3e37878cfb5808a2dbf281ce1da8327dd4a672b13ccdfae4ab0f" +
-            "64736f6c6343" +
-            // - major version
-            "0008" +
-            // - minor version
-            "19" +
-            "0033";
-*/
+            // --- read arguments size
+            "5b3660049003" +
+            // --- check size equals 0x20
+            "60" + "20" + "141560" + "2e" + "57" +
+            // --- read first argument from msg.data to stack
+            "600435" +
+            // --- calculate from where in storage going to read balance
+            "5f525f60205220" +
+            // --- read balance from storage to stack
+            "54" +
+            // --- write balance from stack to memory
+            "60405180919052" +
+            // --- return with balance from memory
+            "602090f3";
+
+
+            /*
+
+                        // metadata
+                        "a2646970667358221220" +
+                        "7b810610924a3e37878cfb5808a2dbf281ce1da8327dd4a672b13ccdfae4ab0f" +
+                        "64736f6c6343" +
+                        // - major version
+                        "0008" +
+                        // - minor version
+                        "19" +
+                        "0033";
+            */
         console.log(bytecode);
         console.log("Bytecode size: " + bytecode.length/2);
 
